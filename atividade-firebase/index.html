@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛹 Skatistas — Firebase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🛹 SKATE FEST <span>FIREBASE</span></h1>
+    <p>Cadastro de skatistas salvando no Firestore</p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>➕ CADASTRAR SKATISTA</h2>
+      <form id="formSkater">
+        <div class="campo">
+          <label>NOME COMPLETO</label>
+          <input type="text" name="nome" placeholder="Ex: Lucas Silva" required>
+        </div>
+        <div class="linha">
+          <div class="campo">
+            <label>PAÍS</label>
+            <input type="text" name="pais" placeholder="Ex: Brasil" required>
+          </div>
+          <div class="campo">
+            <label>IDADE</label>
+            <input type="number" name="idade" placeholder="10-60" min="10" max="60" required>
+          </div>
+        </div>
+
+        <h3>📊 NOTAS DAS MANOBRAS</h3>
+        <div class="notas-grid">
+          <div class="nota"><label>KICKFLIP</label><input type="number" name="kickflip" step="0.1" min="0" max="10" placeholder="0.0" required></div>
+          <div class="nota"><label>HEELFLIP</label><input type="number" name="heelflip" step="0.1" min="0" max="10" placeholder="0.0" required></div>
+          <div class="nota"><label>TRE FLIP</label><input type="number" name="tre_flip" step="0.1" min="0" max="10" placeholder="0.0" required></div>
+          <div class="nota"><label>VARIAL</label><input type="number" name="varial" step="0.1" min="0" max="10" placeholder="0.0" required></div>
+          <div class="nota"><label>LASER</label><input type="number" name="laser" step="0.1" min="0" max="10" placeholder="0.0" required></div>
+        </div>
+
+        <button type="submit">💾 SALVAR NO FIREBASE</button>
+        <div id="mensagem" class="mensagem"></div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>🏆 RANKING</h2>
+        <span class="badge"><span id="total">0</span> skatistas</span>
+      </div>
+      <div id="lista" class="lista"><p class="vazio">Carregando...</p></div>
+    </section>
+  </main>
+
+  <footer><p>Dados salvos em tempo real no <strong>Firestore</strong> · Firebase v10</p></footer>
+  <script type="module" src="js/app.js"></script>
+  <!-- MODAL DE EDIÇÃO -->
+  <div id="modalEditar" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close" id="fecharModal">✖</button>
+      <h2>✏️ EDITAR SKATISTA</h2>
+      <form id="editarForm">
+        <div class="campo">
+          <label>NOME COMPLETO</label>
+          <input type="text" id="editarNome" required>
+        </div>
+        <div class="linha">
+          <div class="campo">
+            <label>PAÍS</label>
+            <input type="text" id="editarPais" required>
+          </div>
+          <div class="campo">
+            <label>IDADE</label>
+            <input type="number" id="editarIdade" min="10" max="60" required>
+          </div>
+        </div>
+
+        <h3>📊 NOTAS</h3>
+        <div class="notas-grid">
+          <div class="nota"><label>KICKFLIP</label><input type="number" id="editarKickflip" step="0.1" min="0" max="10" required></div>
+          <div class="nota"><label>HEELFLIP</label><input type="number" id="editarHeelflip" step="0.1" min="0" max="10" required></div>
+          <div class="nota"><label>TRE FLIP</label><input type="number" id="editarTreflip" step="0.1" min="0" max="10" required></div>
+          <div class="nota"><label>VARIAL</label><input type="number" id="editarVarial" step="0.1" min="0" max="10" required></div>
+          <div class="nota"><label>LASER</label><input type="number" id="editarLaser" step="0.1" min="0" max="10" required></div>
+        </div>
+
+        <button type="submit" class="btn-salvar">💾 SALVAR ALTERAÇÕES</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
